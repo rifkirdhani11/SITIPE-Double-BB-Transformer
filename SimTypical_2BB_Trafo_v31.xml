@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 	<singleLine> defines a singleLine with its background image and zoom level.
+	This element is only interpreted once. It has to be the root element for <simFunc /> elements.
+	Attributes:
+	bgsrc="<PathOfBGPicture>" 
+		The Path may be relative to this XML file or an absolute path. JPEG, BMP and PNG graphics file formats are supported.
+	zoom="<n>" 
+		Default="1" means 100%; Defines the Zoom level of the whole singleline Diagram; 
+		Values < 1 mean zoom out, Values > 1 mean zoom in ; No moving in zoomed-in pictures is supported
+-->
+<!--	<simFunc /> defines a Simulation Function to visualize inside the Bay Single Line.
+	This element has to be a child of a <singleLine> element.
+	Attributes:
+	loc1="<Location1>"
+		Defines the Location 1 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Station or Region.
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 1 field from this Test Object refering BaySingleline.vi; 
+	loc2="<Location2>"
+		Defines the Location 2 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Voltage Level
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 2 field from this Test Object refering BaySingleline.vi
+	loc3="<Location3>"
+		Defines the Location 3 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Bay Name
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 3 field from this Test Object refering BaySingleline.vi
+	loc4="<Location4>"
+		Defines the Location 4 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. IED Name
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 4 field from this Test Object refering BaySingleline.vi	
+	objectname="<Objectname>"
+		Defines the Objectname part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Q0
+		NOTE: This field may also containg the ##<numeric> number of the Simulation Function, if the Test Object contains multiple simulation functions.
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		MANDATORY;
+	posX="<n>"
+		The X coordinate (horicontal) in [pixels] of the leftmost point of the symbol to place on the Background picture. 
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	posY="<n>"
+		The Y coordinate (vertical) in [pixels] of the topmost point of the symbol to place on the background picture.
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	border="<n>"
+		The thickness of the border  of the symbol in [pixels], which should be stripped out.
+		Typical simulation function symbols for the Circuit Breaker, Disconnector and Earthing Switch have a invisible border of 3px.
+		OPTIONAL; Default="0" meaning a border with 0px thicknis; 
+	rotation="<n>" 
+		Defines the rotation to be applied to the symbol in [degrees]
+		Typical values could be "90" for a 90 degrees turn in counterclockwise direction or "270" for a 90 degrees turn in clockwise direction.
+		OPTIONAL; Default="0" means no rotation; 
+-->
+<!-- 	<text> defines a text element to draw text on the singleline.
+	Definition: <text [attributes]>any text</text>
+	Occurences of the elements %loc1%, %loc2%, %loc3%, %loc4%, %objectname% 
+	in the text are replaced by the respective BaySingleLine.vi test object address element.
+	Attributes:
+	posX="<n>"
+		The X coordinate (horicontal) in [pixels] of the leftmost point of the text to place on the Background picture. 
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	posY="<n>"
+		The Y coordinate (vertical) in [pixels] of the topmost point of the text to place on the background picture.
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	orientation="<n>"
+		The orientation of the text. Choose from the values 0 (none), 1 (stacked), 2 (clockwise rotation), 3 (counterclockwise rotation)
+		OPTIONAL; Default="0" means left-to-right orientation
+	fontsize="<n>"
+		The fontsize in [point / pt] for the text to be drawn.
+		OPTIONAL; Default="18"
+	textcolor="<red>,<green>,<blue>"
+		The color of the text to be drawn in RGB notation. Color components of red, green and blue are noted with values from 0 ... 255
+		E.g. "120,120,120" for a gray text, "255,255,255" for a white text, "255,0,0" for a red text.
+		OPTIONAL; Default="0,0,0" meaning black color
+-->
+<singleLine bgsrc="SimTypical_2BB_Trafo_Indication.png" zoom="1"> 
+	<simFunc objectname="Q1" 	posX="322" 	posY="165" 	border="8" 	rotation="45" />
+	<simFunc objectname="Q2" 	posX="510" 	posY="165" 	border="8" 	rotation="45" />
+	<simFunc objectname="H8" 	posX="500" 	posY="475" 	border="4" 	rotation="90" />
+	<simFunc objectname="Q0" 	posX="427" 	posY="285" 	border="8" 	rotation="0" />	
+	<simFunc objectname="Q02" 	posX="429" 	posY="550" 	border="8" 	rotation="0" />
+	<simFunc objectname="Q03" 	posX="600" 	posY="550" 	border="8" 	rotation="0" />
+	
+	
+	<text posX="50" posY="17" fontsize="22" bold="true">%loc2% TRANSFORMER </text>
+	<text posX="95" posY="40" fontsize="20" bold="true">CONTROL PANEL </text>
+	<text posX="85" posY="65" fontsize="30" bold="true">%loc3%</text>
+
+	
+	<text posX="545" posY="20" fontsize="18" bold="true">%loc2% BB1</text>
+	<text posX="545" posY="90" fontsize="18" bold="true">%loc2% BB2</text>
+	<text posX="260" posY="130" bold="true">%loc3%</text>
+	<text posX="407" posY="192">-Q1</text>
+	<text posX="595" posY="192">-Q2</text>
+	<text posX="490" posY="310">-Q0</text>	
+	<text posX="575" posY="497">-H8</text>
+	<text posX="501" posY="575">-Q02</text>
+
+	<simFunc objectname="TCS1" 		posX="25" 	posY="160" 	border="8" 	rotation="0" />
+	<simFunc objectname="TCS2" 		posX="125" 	posY="160" 	border="8" 	rotation="0" />
+	<simFunc objectname="Q1 LOC REM" 	posX="80" 	posY="230" 	border="6" 	rotation="0" />	
+	<simFunc objectname="Q2 LOC REM"	posX="80" 	posY="340" 	border="6" 	rotation="0" />
+	<simFunc objectname="Q0 LOC REM" 	posX="80" 	posY="452" 	border="6" 	rotation="0" />
+	<simFunc objectname="Q02 LOC REM"	posX="80" 	posY="565" 	border="6" 	rotation="0" />
+
+	<text posX="650" posY="20">A301</text>
+	<simFunc objectname="IND 1" 	posX="650" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 2"	posX="720" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 3" 	posX="790" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 4"	posX="860" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 5" 	posX="930" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 6"	posX="1000" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 7" 	posX="1070" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 8"	posX="1140" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 9" 	posX="1210" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 10"	posX="1280" 	posY="40" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 11" 	posX="650" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 12"	posX="720" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 13" 	posX="790" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 14"	posX="860" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 15" 	posX="930" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 16"	posX="1000" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 17" 	posX="1070" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 18"	posX="1140" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 19" 	posX="1210" 	posY="65" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 20"	posX="1280" 	posY="65" 	border="17" 	rotation="0" />
+
+	<text posX="650" posY="90">N901</text>
+	<simFunc objectname="IND 21" 	posX="650" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 22"	posX="720" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 23" 	posX="790" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 24"	posX="860" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 25" 	posX="930" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 26"	posX="1000" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 27" 	posX="1070" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 28"	posX="1140" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 29" 	posX="1210" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 30"	posX="1280" 	posY="110" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 31" 	posX="650" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 32"	posX="720" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 33" 	posX="790" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 34"	posX="860" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 35" 	posX="930" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 36"	posX="1000" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 37" 	posX="1070" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 38"	posX="1140" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 39" 	posX="1210" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 40"	posX="1280" 	posY="135" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 41" 	posX="650" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 42"	posX="720" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 43" 	posX="790" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 44"	posX="860" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 45" 	posX="930" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 46"	posX="1000" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 47" 	posX="1070" 	posY="160" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 48"	posX="1140" 	posY="160" 	border="17" 	rotation="0" />	
+
+	<text posX="650" posY="185">F871</text>
+	<simFunc objectname="IND 49" 	posX="650" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 50"	posX="720" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 51" 	posX="790" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 52"	posX="860" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 53" 	posX="930" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 54"	posX="1000" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 55" 	posX="1070" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 56"	posX="1140" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 57" 	posX="1210" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 58"	posX="1280" 	posY="205" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 59" 	posX="650" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 60"	posX="720" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 61" 	posX="790" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 62"	posX="860" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 63" 	posX="930" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 64"	posX="1000" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 65" 	posX="1070" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 66"	posX="1140" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 67" 	posX="1210" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 68"	posX="1280" 	posY="230" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 69" 	posX="650" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 70"	posX="720" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 71" 	posX="790" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 72"	posX="860" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 73" 	posX="930" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 74"	posX="1000" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 75"	posX="1070" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 76" 	posX="1140" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 77"	posX="1210" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 78" 	posX="1280" 	posY="255" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 79"	posX="650" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 80" 	posX="720" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 81"	posX="790" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 82" 	posX="860" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 83"	posX="930" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 84" 	posX="1000" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 85"	posX="1070" 	posY="280" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 86" 	posX="1140" 	posY="280" 	border="17" 	rotation="0" />
+
+	<text posX="650" posY="305">F501</text>
+	<simFunc objectname="IND 87" 	posX="650" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 88"	posX="720" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 89" 	posX="790" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 90"	posX="860" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 91" 	posX="930" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 92"	posX="1000" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 93" 	posX="1070" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 94"	posX="1140" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 95" 	posX="1210" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 96"	posX="1280" 	posY="325" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 97" 	posX="650" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 98"	posX="720" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 99" 	posX="790" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 100"	posX="860" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 101" 	posX="930" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 102"	posX="1000" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 103" 	posX="1070" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 104"	posX="1140" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 105" 	posX="1210" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 106"	posX="1280" 	posY="350" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 107" 	posX="650" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 108"	posX="720" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 109" 	posX="790" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 110"	posX="860" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 111" 	posX="930" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 112"	posX="1000" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 113"	posX="1070" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 114" 	posX="1140" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 115"	posX="1210" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 116" 	posX="1280" 	posY="375" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 117" 	posX="650" 	posY="400" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 118"	posX="720" 	posY="400" 	border="17" 	rotation="0" />
+	
+	<text posX="650" posY="425">F502</text>
+	<simFunc objectname="IND 119" 	posX="650" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 120"	posX="720" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 121" 	posX="790" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 122"	posX="860" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 123" 	posX="930" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 124"	posX="1000" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 125" 	posX="1070" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 126"	posX="1140" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 127" 	posX="1210" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 128"	posX="1280" 	posY="445" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 129" 	posX="650" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 130"	posX="720" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 131" 	posX="790" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 132"	posX="860" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 133" 	posX="930" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 134"	posX="1000" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 135" 	posX="1070" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 136"	posX="1140" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 137" 	posX="1210" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 138"	posX="1280" 	posY="470" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 139" 	posX="650" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 140"	posX="720" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 141" 	posX="790" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 142"	posX="860" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 143" 	posX="930" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 144"	posX="1000" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 145"	posX="1070" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 146" 	posX="1140" 	posY="495" 	border="17" 	rotation="0" />
+	<simFunc objectname="IND 147"	posX="1210" 	posY="495" 	border="17" 	rotation="0" />
+ 	<simFunc objectname="IND 148"	posX="1280" 	posY="495" 	border="17" 	rotation="0" />
+ 
+-->	
+
+
+
+</singleLine>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 	<singleLine> defines a singleLine with its background image and zoom level.
+	This element is only interpreted once. It has to be the root element for <simFunc /> elements.
+	Attributes:
+	bgsrc="<PathOfBGPicture>" 
+		The Path may be relative to this XML file or an absolute path. JPEG, BMP and PNG graphics file formats are supported.
+	zoom="<n>" 
+		Default="1" means 100%; Defines the Zoom level of the whole singleline Diagram; 
+		Values < 1 mean zoom out, Values > 1 mean zoom in ; No moving in zoomed-in pictures is supported
+-->
+<!--	<simFunc /> defines a Simulation Function to visualize inside the Bay Single Line.
+	This element has to be a child of a <singleLine> element.
+	Attributes:
+	loc1="<Location1>"
+		Defines the Location 1 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Station or Region.
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 1 field from this Test Object refering BaySingleline.vi; 
+	loc2="<Location2>"
+		Defines the Location 2 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Voltage Level
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 2 field from this Test Object refering BaySingleline.vi
+	loc3="<Location3>"
+		Defines the Location 3 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Bay Name
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 3 field from this Test Object refering BaySingleline.vi
+	loc4="<Location4>"
+		Defines the Location 4 part of the Unique Test Object identifier containing the desired Simulation Function. e.g. IED Name
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		OPTIONAL; Default "" means takeover Location 4 field from this Test Object refering BaySingleline.vi	
+	objectname="<Objectname>"
+		Defines the Objectname part of the Unique Test Object identifier containing the desired Simulation Function. e.g. Q0
+		NOTE: This field may also containg the ##<numeric> number of the Simulation Function, if the Test Object contains multiple simulation functions.
+		The fields Loc1, Loc2, Loc3, Loc4 and ObjectName are combined to build a Unique Test Object Idenfier and to identify the simulation function.
+		MANDATORY;
+	posX="<n>"
+		The X coordinate (horicontal) in [pixels] of the leftmost point of the symbol to place on the Background picture. 
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	posY="<n>"
+		The Y coordinate (vertical) in [pixels] of the topmost point of the symbol to place on the background picture.
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	border="<n>"
+		The thickness of the border  of the symbol in [pixels], which should be stripped out.
+		Typical simulation function symbols for the Circuit Breaker, Disconnector and Earthing Switch have a invisible border of 3px.
+		OPTIONAL; Default="0" meaning a border with 0px thicknis; 
+	rotation="<n>" 
+		Defines the rotation to be applied to the symbol in [degrees]
+		Typical values could be "90" for a 90 degrees turn in counterclockwise direction or "270" for a 90 degrees turn in clockwise direction.
+		OPTIONAL; Default="0" means no rotation; 
+-->
+<!-- 	<text> defines a text element to draw text on the singleline.
+	Definition: <text [attributes]>any text</text>
+	Occurences of the elements %loc1%, %loc2%, %loc3%, %loc4%, %objectname% 
+	in the text are replaced by the respective BaySingleLine.vi test object address element.
+	Attributes:
+	posX="<n>"
+		The X coordinate (horicontal) in [pixels] of the leftmost point of the text to place on the Background picture. 
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	posY="<n>"
+		The Y coordinate (vertical) in [pixels] of the topmost point of the text to place on the background picture.
+		The coordinates are 0-based on the leftmost, topmost point of the background picture. Therefore you may locate this coordinate with a graphics Tool like MS Paint.
+		MANDATORY;
+	orientation="<n>"
+		The orientation of the text. Choose from the values 0 (none), 1 (stacked), 2 (clockwise rotation), 3 (counterclockwise rotation)
+		OPTIONAL; Default="0" means left-to-right orientation
+	fontsize="<n>"
+		The fontsize in [point / pt] for the text to be drawn.
+		OPTIONAL; Default="18"
+	textcolor="<red>,<green>,<blue>"
+		The color of the text to be drawn in RGB notation. Color components of red, green and blue are noted with values from 0 ... 255
+		E.g. "120,120,120" for a gray text, "255,255,255" for a white text, "255,0,0" for a red text.
+		OPTIONAL; Default="0,0,0" meaning black color
+-->
+<singleLine bgsrc="SimTypical_Indication.png" zoom="1"> 
+	<simFunc objectname="TCS1" 	posX="75" 	posY="50" 	border="1" 	rotation="0" />
+	<simFunc objectname="TCS2" 	posX="225" 	posY="50" 	border="1" 	rotation="0" />
+
+	<simFunc objectname="Q0 LOCAL" 	posX="10" 	posY="120" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q0 REMOTE"	posX="10" 	posY="160" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q1 LOCAL" 	posX="100" 	posY="120" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q1 REMOTE"	posX="100" 	posY="160" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q2 LOCAL" 	posX="190" 	posY="120" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q2 REMOTE"	posX="190" 	posY="160" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q9 LOCAL" 	posX="280" 	posY="120" 	border="1" 	rotation="0" />
+	<simFunc objectname="Q9 REMOTE"	posX="280" 	posY="160" 	border="1" 	rotation="0" />
+
+	<simFunc objectname="IND 1" 	posX="75" 	posY="220" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 2"	posX="75" 	posY="260" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 3" 	posX="75" 	posY="300" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 4"	posX="75" 	posY="340" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 5" 	posX="75" 	posY="380" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 6"	posX="225" 	posY="220" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 7" 	posX="225" 	posY="260" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 8"	posX="225" 	posY="300" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 9" 	posX="225" 	posY="340" 	border="1" 	rotation="0" />
+	<simFunc objectname="IND 10"	posX="225" 	posY="380" 	border="1" 	rotation="0" />
+
+
+
+
+	<text posX="115" 		posY="10" 	fontsize="18" 	bold="true"	>%loc4% TCS</text>
+	<text posX="215" 		posY="10" 	fontsize="18" 	bold="true"	>IND</text>
+</singleLine>
